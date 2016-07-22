@@ -1,0 +1,124 @@
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin : 'maven'
+
+group = 'com.nightsoul.commons'
+version = '1.0.0-SNAPSHOT'
+
+targetCompatibility = '1.6'
+sourceCompatibility = '1.6'
+
+tasks.withType(Compile) { 
+    	options.encoding = "UTF-8" 
+}
+
+sourceSets {
+	main {
+		java {
+			srcDir 'src/main/java'
+		}
+		resources {
+			srcDir 'src/main/resources'
+		}
+	}
+	
+	test {
+		java {
+			srcDir 'src/test/java'
+		}
+		resources {
+			srcDir 'src/test/resources'
+		}
+	}
+}
+
+repositories {
+	maven {
+		credentials {
+			username = System.properties['user']
+			password = System.properties['password']
+			if(username == null || username.isEmpty()){
+				username = 'admin'
+			}
+			if(password == null || password.isEmpty()){
+				password = 'admin123'
+			}
+			username username
+			password password
+		}
+			url 'http://179.179.179.50:8086/nexus/content/groups/public/'
+	}
+}
+
+javadoc {
+	options.encoding = "UTF-8"
+}
+
+eclipse {
+	classpath { 
+		downloadSources=true 
+		downloadJavadoc = false
+	}
+}
+
+
+
+uploadArchives {
+	repositories {
+		mavenDeployer {
+			repository(url:'http://127.0.0.1:8081/artifactory/libs-snapshot-local') {
+				authentication(userName: "admin", password: "admin123")
+			}
+
+		pom.project {
+			description 'nightsoul commons'
+		}
+
+		pom.withXml { XmlProvider xmlProvider ->
+			def xml = xmlProvider.asString()
+			def pomXml = new XmlParser().parse(new ByteArrayInputStream(xml.toString().bytes))
+			def newXml = new StringWriter()
+			def printer = new XmlNodePrinter(new PrintWriter(newXml))
+			printer.preserveWhitespace = true
+			printer.print(pomXml)
+			xml.setLength(0)
+			xml.append(newXml.toString())
+		}
+        }
+    }
+}
+
+buildscript {
+
+    repositories {
+	mavenCentral()
+	maven {
+		credentials {
+			def uname = System.properties['user']
+			def pwd = System.properties['password']
+			if(uname == null || uname.isEmpty()){
+				uname = 'admin'
+			}
+			if(pwd == null || pwd.isEmpty()){
+				pwd = 'password'
+			}
+			username = uname
+			password = pwd
+		}
+			url ='http://127.0.0.1:8081/artifactory/repo/'
+	}
+    }
+
+    dependencies {
+
+    }
+
+}
+
+
+
+dependencies {
+	compile 'junit:junit:4.11'
+}
+
+
