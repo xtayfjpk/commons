@@ -118,7 +118,10 @@ buildscript {
 
 
 dependencies {
-	compile 'junit:junit:4.11'
+	testCompile 'junit:junit:4.11'
+	compile 'commons-lang:commons-lang:2.4'
+	compile 'commons-io:commons-io:1.4'
+	compile 'com.google.guava:guava:18.0'
 }
 
 
