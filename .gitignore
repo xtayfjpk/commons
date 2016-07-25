@@ -32,6 +32,8 @@ Thumbs.db
 */target
 /build
 */build
+/bin
+*/bin
 
 out
 .idea
