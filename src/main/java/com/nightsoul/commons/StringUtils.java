@@ -5,14 +5,6 @@ public abstract class StringUtils {
 	
 	private StringUtils(){}
 	
-	public static boolean isEmpty(String value) {
-		return value==null || value.isEmpty();
-	}
-	
-	public static boolean isNotEmpty(String value) {
-		return !isEmpty(value);
-	}
-	
 	public static boolean isTrimedEmpty(String value) {
 		return value==null || value.trim().isEmpty();
 	}
@@ -110,4 +102,5 @@ public abstract class StringUtils {
 	     int v = (int)a;
 	     return (v >=19968 && v <= 171941);
 	}
+	
 }
