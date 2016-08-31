@@ -48,6 +48,8 @@ repositories {
 		}
 			url 'http://179.179.179.50:8086/nexus/content/groups/public/'
 	}
+
+	mavenCentral()
 }
 
 javadoc {
