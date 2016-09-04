@@ -2,6 +2,12 @@ package com.nightsoul.commons.util;
 
 public abstract class StringUtils {
 	public static final String EMPTY = "";
+	public static final String SPACE = " ";
+	public static final String TABLE = "\t";
+	public static final String RETURN = "\r";
+	public static final String NEWLINE = "\n";
+	public static final String RN = "\r\n";
+	public static final String COMMA = ",";
 	
 	private StringUtils(){}
 	
@@ -14,11 +20,11 @@ public abstract class StringUtils {
 	}
 	
 	public static String trimLineBreak(String value) {
-		return value==null ? value : value.replaceAll("\n", "").replaceAll("\r", "");
+		return value==null ? value : value.replaceAll(NEWLINE, EMPTY).replaceAll(RETURN, EMPTY);
 	}
 	
 	public static String lineBreakToBr(String value) {
-		return value==null ? value : value.replaceAll("\r\n", "<br/>").replaceAll("\n", "<br/>");
+		return value==null ? value : value.replaceAll(RN, "<br/>").replaceAll(NEWLINE, "<br/>");
 	}
 	
 	public static String ascii2native(String ascii) {

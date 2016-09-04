@@ -1,8 +1,9 @@
 package com.nightsoul.commons.util;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
+
+import com.google.common.collect.Lists;
 
 public abstract class SQLUtils {
 	private SQLUtils(){}
@@ -10,14 +11,66 @@ public abstract class SQLUtils {
 	public static String buildInSQL(String paramName, List<? extends Serializable> paramValues) {
 		return buildInSQL(paramName, paramValues.toArray(new Serializable[0]));
 	}
+
+	public static String buildNotInSQL(String paramName, List<? extends Serializable> paramValues) {
+		return buildInSQL(true, paramName, paramValues.toArray(new Serializable[0]));
+	}
 	
 	public static String buildInSQL(String paramName, Serializable... paramValues) {
-		if (paramValues == null || paramValues.length == 0) {
-			return "";
-		}
+		return buildInSQL(false, paramName, paramValues);
+	}
 
-		StringBuilder builder = new StringBuilder(" ");
-		builder.append(paramName).append(" in (");
+	public static String buildNotInSQL(String paramName, Serializable... paramValues) {
+		return buildInSQL(true, paramName, paramValues);
+	}
+	
+	public static String buildLikeSQL(String paramName, String value) {
+		return StringUtils.SPACE + paramName + "like '%" + value + "%' ";
+	}
+
+	public static String buildNotLikeSQL(String paramName, String value) {
+		return StringUtils.SPACE + paramName + "not like '%" + value + "%' ";
+	}
+
+	public static String buildEqualSQL(String paramName, Serializable value) {
+		return StringUtils.SPACE + paramName + "=" + getValueSQL(value);
+	}
+	public static String buildNotEqualSQL(String paramName, Serializable value) {
+		return StringUtils.SPACE + paramName + "!=" + getValueSQL(value);
+	}
+
+	public static String buildGreaterThanSQL(String paramName, Serializable value) {
+		return StringUtils.SPACE + paramName + ">" + getValueSQL(value);
+	}
+	public static String buildNotGreaterThanSQL(String paramName, Serializable value) {
+		return StringUtils.SPACE + paramName + "<=" + getValueSQL(value);
+	}
+	
+	public static String buildLessThanSQL(String paramName, Serializable value) {
+		return StringUtils.SPACE + paramName + "<" + getValueSQL(value);
+	}
+	public static String buildNotLessThanSQL(String paramName, Serializable value) {
+		return StringUtils.SPACE + paramName + ">=" + getValueSQL(value);
+	}
+
+	public static String buildBetweenSQL(String paramName, Serializable lower, Serializable upper) {
+		return buildNotLessThanSQL(paramName, lower) + " and" + buildNotGreaterThanSQL(paramName, upper);
+	}
+
+	public static String getValueSQL(Serializable value) {
+		return value instanceof String ? "'" + value + "'" : value.toString();
+	}
+	
+	private static String buildInSQL(boolean isNotIn, String paramName, Serializable... paramValues) {
+		if (paramValues == null || paramValues.length == 0) {
+			return StringUtils.EMPTY;
+		}
+		StringBuilder builder = new StringBuilder(StringUtils.SPACE);
+		builder.append(paramName);
+		if(isNotIn) {
+			builder.append(" not");
+		}
+		builder.append(" in (");
 		for (Serializable paramValue : paramValues) {
 			if (paramValue instanceof String) {
 				builder.append("'");
@@ -28,12 +81,10 @@ public abstract class SQLUtils {
 			}
 			builder.append(",");
 		}
-
 		if (builder.length() > 0) {
 			builder.setLength(builder.length() - 1);
 		}
 		builder.append(")");
-
 		return builder.toString();
 	}
 	
@@ -46,18 +97,6 @@ public abstract class SQLUtils {
 	 * @return
 	 */
 	public static <T> List<List<T>> splitInSQLValues(List<T> values, int splitSize) {
-		List<List<T>> subValuesList = new ArrayList<List<T>>();
-		List<T> subValues = new ArrayList<T>();
-		for (int i = 1; i <= values.size(); i++) {
-			if (i % splitSize == 0) {
-				subValuesList.add(subValues);
-				subValues = new ArrayList<T>();
-			}
-			subValues.add(values.get(i - 1));
-		}
-		if (!subValues.isEmpty()) {
-			subValuesList.add(subValues);
-		}
-		return subValuesList;
+		return Lists.partition(values, splitSize);
 	}
 }
