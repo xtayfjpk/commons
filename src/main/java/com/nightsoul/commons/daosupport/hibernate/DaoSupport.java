@@ -205,7 +205,7 @@ public abstract class DaoSupport<T> implements BaseDao<T> {
 	
 	
 	/**
-	 * 获取统计属性,该方法是为了解决hibernate解析联合主键select count(o) from Xxx o语句BUG而增加,hibernate对此jpql解析后的sql为select count(field1,field2,...),显示使用count()统计多个字段是错误的
+	 * 获取统计属性,该方法是为了解决hibernate解析联合主键select count(o) from Xxx o语句BUG而增加,hibernate对此hql解析后的sql为select count(field1,field2,...),显示使用count()统计多个字段是错误的
 	 * @param <E>
 	 * @param clazz
 	 * @return

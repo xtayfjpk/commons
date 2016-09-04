@@ -118,7 +118,7 @@ public interface BaseDao <T> {
 	 * @param queryParams
 	 * @return
 	 */
-	public QueryResult<T>  getScrollData(String wherejpql , Object[] queryParams);
+	public QueryResult<T>  getScrollData(String whereHql , Object[] queryParams);
 	
 	/**
 	 * 获取指定条件的所有记录而且排序
@@ -127,7 +127,7 @@ public interface BaseDao <T> {
 	 * @param orderBy
 	 * @return
 	 */
-	public QueryResult<T>  getScrollData(String wherejpql , Object[] queryParams, LinkedHashMap<String, String>  orderBy);
+	public QueryResult<T>  getScrollData(String whereHql , Object[] queryParams, LinkedHashMap<String, String>  orderBy);
 	
 	/**
 	 * 获取指定字段指定范围内的所有数据
@@ -156,5 +156,5 @@ public interface BaseDao <T> {
 	 * @param queryParams  查询参数
 	 * @return
 	 */
-	public long  getCount(String  wherejpql, Object[] queryParams);
+	public long  getCount(String  whereHql, Object[] queryParams);
 }
