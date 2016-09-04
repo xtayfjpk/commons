@@ -109,4 +109,26 @@ public abstract class StringUtils {
 	     return (v >=19968 && v <= 171941);
 	}
 	
+	
+	public static String lowerFirstChar(String str) {
+		if(null==str) {
+			return null;
+		}
+		if(str.length()==0) {
+			return str;
+		}
+		char c = Character.toLowerCase(str.charAt(0));
+		return c + str.substring(1);
+	}
+	
+	public static String upperFirstChar(String str) {
+		if(null==str) {
+			return null;
+		}
+		if(str.length()==0) {
+			return str;
+		}
+		char c = Character.toUpperCase(str.charAt(0));
+		return c + str.substring(1);
+	}
 }
