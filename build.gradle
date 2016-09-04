@@ -33,6 +33,7 @@ sourceSets {
 }
 
 repositories {
+	mavenCentral()
 	maven {
 		credentials {
 			username = System.properties['user']
@@ -49,7 +50,7 @@ repositories {
 			url 'http://179.179.179.50:8086/nexus/content/groups/public/'
 	}
 
-	mavenCentral()
+	
 }
 
 javadoc {
@@ -125,6 +126,10 @@ dependencies {
 	compile 'commons-io:commons-io:1.4'
 	compile 'commons-collections:commons-collections:3.2.1'
 	compile 'com.google.guava:guava:18.0'
+	compile 'org.hibernate:hibernate-core:3.3.2.GA'
+	compile 'org.mybatis:mybatis:3.2.3'
+	compile 'org.mybatis:mybatis-spring:1.2.1'
+	compile 'org.springframework:spring-tx:3.2.4.RELEASE'
 }
 
 
