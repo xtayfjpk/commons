@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.Test;
 
 import com.google.common.base.Function;
+import com.nightsoul.commons.util.CollectionUtils;
 
 public class CollectionUtilsTest {
 

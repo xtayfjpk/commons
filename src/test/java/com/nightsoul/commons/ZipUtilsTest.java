@@ -7,6 +7,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import com.nightsoul.commons.util.ZipUtils;
+
 public class ZipUtilsTest {
 
 	@Test
