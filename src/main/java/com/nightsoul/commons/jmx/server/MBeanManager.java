@@ -13,6 +13,7 @@ import javax.management.MBeanServer;
 import javax.management.MalformedObjectNameException;
 import javax.management.NotCompliantMBeanException;
 import javax.management.ObjectName;
+import javax.management.StandardMBean;
 import javax.management.remote.JMXAuthenticator;
 import javax.management.remote.JMXConnectorServer;
 import javax.management.remote.JMXConnectorServerFactory;
@@ -24,6 +25,13 @@ import javax.security.auth.Subject;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
+/**
+ * JMX服务类
+ * 
+ * @see StandardMBean
+ * @author zj
+ *
+ */
 public final class MBeanManager {
 	private MBeanServer server;
 	private JMXConnectorServer jmxConnectorServer;

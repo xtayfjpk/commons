@@ -1,5 +1,7 @@
 package com.nightsoul.commons.util;
 
+import com.google.common.base.Preconditions;
+
 public abstract class StringUtils {
 	public static final String EMPTY = "";
 	public static final String SPACE = " ";
@@ -130,5 +132,18 @@ public abstract class StringUtils {
 		}
 		char c = Character.toUpperCase(str.charAt(0));
 		return c + str.substring(1);
+	}
+	
+	public static String toLength(String value, int length) {
+		Preconditions.checkArgument(length > 0, "String length must greater than 0");
+		if(org.apache.commons.lang.StringUtils.isEmpty(value)) {
+			return EMPTY;
+		}
+		
+		if(value.length() <= length) {
+			return value;
+		}
+		
+		return value.substring(0, length) + "...";
 	}
 }

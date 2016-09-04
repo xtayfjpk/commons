@@ -12,6 +12,7 @@ import java.util.Map;
 
 import javax.management.Attribute;
 import javax.management.AttributeList;
+import javax.management.JMX;
 import javax.management.MBeanInfo;
 import javax.management.MBeanServerConnection;
 import javax.management.MBeanServerInvocationHandler;
@@ -26,7 +27,12 @@ import com.nightsoul.commons.util.ObjectValue;
 import com.nightsoul.commons.util.ReflectUtils;
 import com.nightsoul.commons.util.StringUtils;
 
-//已完成
+/**
+ * JMX客户端连接工具类
+ * @see JMX
+ * @author zj
+ *
+ */
 public abstract class JMXClientHelper {
 	
 	public static <T> T newMBeanProxy(MBeanServerConnection connection, String objectName, Class<T> clazz, boolean notificationBroadcaster) {
