@@ -1,4 +1,4 @@
-package com.nightsoul.commons;
+package com.nightsoul.commons.util;
 
 
 public abstract class MathUtils {

@@ -1,4 +1,4 @@
-package com.nightsoul.commons;
+package com.nightsoul.commons.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.nightsoul.commons;
+package com.nightsoul.commons.util;
 
 
 
@@ -48,7 +48,7 @@ public abstract class ObjectUtils {
 	}
 	
 	/**
-	 * 鍒ゆ柇鏌愬璞℃槸鍚︽槸鎸囧畾绫荤殑瀹炰緥
+	 * 判断某对象是否是指定类的实例
 	 * @param value
 	 * @param clazz
 	 * @return
