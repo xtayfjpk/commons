@@ -2,7 +2,9 @@ package com.nightsoul.commons;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -118,5 +120,15 @@ public abstract class CollectionUtils {
 	 */
 	public static <T> boolean isNotEmpty(T[] array) {
 		return !isEmpty(array);
+	}
+	
+	public static <T> void remove(Collection<T> collection, Predicate<T> condition) {
+		Iterator<T> iter = collection.iterator();
+		while(iter.hasNext()) {
+			T element = iter.next();
+			if(condition.apply(element)) {
+				iter.remove();
+			}
+		}
 	}
 }

@@ -46,4 +46,14 @@ public abstract class ObjectUtils {
 	public static boolean isNotNull(Object value) {
 		return !isNull(value);
 	}
+	
+	/**
+	 * 判断某对象是否是指定类的实例
+	 * @param value
+	 * @param clazz
+	 * @return
+	 */
+	public static boolean isInstanceOf(Object value, Class<?> clazz) {
+		return clazz.isAssignableFrom(value.getClass());
+	}
 }
