@@ -69,7 +69,7 @@ eclipse {
 uploadArchives {
 	repositories {
 		mavenDeployer {
-			repository(url:'http://127.0.0.1:8081/artifactory/libs-snapshot-local') {
+			repository(url:'http://179.179.179.50:8086/nexus/content/repositories/comba-snapshot') {
 				authentication(userName: "admin", password: "admin123")
 			}
 
