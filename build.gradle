@@ -73,20 +73,20 @@ uploadArchives {
 				authentication(userName: "admin", password: "admin123")
 			}
 
-		pom.project {
-			description 'nightsoul commons'
-		}
+			pom.project {
+				description 'nightsoul commons'
+			}
 
-		pom.withXml { XmlProvider xmlProvider ->
-			def xml = xmlProvider.asString()
-			def pomXml = new XmlParser().parse(new ByteArrayInputStream(xml.toString().bytes))
-			def newXml = new StringWriter()
-			def printer = new XmlNodePrinter(new PrintWriter(newXml))
-			printer.preserveWhitespace = true
-			printer.print(pomXml)
-			xml.setLength(0)
-			xml.append(newXml.toString())
-		}
+			pom.withXml { XmlProvider xmlProvider ->
+				def xml = xmlProvider.asString()
+				def pomXml = new XmlParser().parse(new ByteArrayInputStream(xml.toString().bytes))
+				def newXml = new StringWriter()
+				def printer = new XmlNodePrinter(new PrintWriter(newXml))
+				printer.preserveWhitespace = true
+				printer.print(pomXml)
+				xml.setLength(0)
+				xml.append(newXml.toString())
+			}
         }
     }
 }
@@ -94,22 +94,22 @@ uploadArchives {
 buildscript {
 
     repositories {
-	mavenCentral()
-	maven {
-		credentials {
-			def uname = System.properties['user']
-			def pwd = System.properties['password']
-			if(uname == null || uname.isEmpty()){
-				uname = 'admin'
+		mavenCentral()
+		maven {
+			credentials {
+				def uname = System.properties['user']
+				def pwd = System.properties['password']
+				if(uname == null || uname.isEmpty()){
+					uname = 'admin'
+				}
+				if(pwd == null || pwd.isEmpty()){
+					pwd = 'password'
+				}
+				username = uname
+				password = pwd
 			}
-			if(pwd == null || pwd.isEmpty()){
-				pwd = 'password'
-			}
-			username = uname
-			password = pwd
+				url ='http://179.179.179.50:8086/nexus/content/groups/public/'
 		}
-			url ='http://127.0.0.1:8081/artifactory/repo/'
-	}
     }
 
     dependencies {

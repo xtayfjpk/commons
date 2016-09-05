@@ -48,7 +48,7 @@ public abstract class ObjectUtils {
 	}
 	
 	/**
-	 * 判断某对象是否是指定类的实例
+	 * 鍒ゆ柇鏌愬璞℃槸鍚︽槸鎸囧畾绫荤殑瀹炰緥
 	 * @param value
 	 * @param clazz
 	 * @return
