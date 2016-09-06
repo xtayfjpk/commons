@@ -14,7 +14,7 @@
   	<description>Get bean value in force</description>
   	<display-name>getValue</display-name>
   	<name>getValue</name>
-  	<function-class>com.nightsoul.commons.util.tld.NightsoulFunctions</function-class>
+  	<function-class>com.nightsoul.commons.tag.NightsoulFunctions</function-class>
   	<function-signature>java.lang.Object getValue(java.lang.Object, java.lang.String)</function-signature>  	
   </function>
 
@@ -22,35 +22,35 @@
   	<description>Invoke method in force</description>
   	<display-name>invoke0</display-name>
   	<name>invoke0</name>
-  	<function-class>com.nightsoul.commons.util.tld.NightsoulFunctions</function-class>
+  	<function-class>com.nightsoul.commons.tag.NightsoulFunctions</function-class>
   	<function-signature>java.lang.Object invoke(java.lang.Object, java.lang.String)</function-signature>  	
   </function>
   <function>
   	<description>Invoke method in force</description>
   	<display-name>invoke1</display-name>
   	<name>invoke1</name>
-  	<function-class>com.nightsoul.commons.util.tld.NightsoulFunctions</function-class>
+  	<function-class>com.nightsoul.commons.tag.NightsoulFunctions</function-class>
   	<function-signature>java.lang.Object invoke(java.lang.Object, java.lang.String, java.lang.Object)</function-signature>  	
   </function>
   <function>
   	<description>Invoke method in force</description>
   	<display-name>invoke2</display-name>
   	<name>invoke2</name>
-  	<function-class>com.nightsoul.commons.util.tld.NightsoulFunctions</function-class>
+  	<function-class>com.nightsoul.commons.tag.NightsoulFunctions</function-class>
   	<function-signature>java.lang.Object invoke(java.lang.Object, java.lang.String, java.lang.Object, java.lang.Object)</function-signature>  	
   </function>
   <function>
   	<description>Invoke method in force</description>
   	<display-name>invoke3</display-name>
   	<name>invoke3</name>
-  	<function-class>com.nightsoul.commons.util.tld.NightsoulFunctions</function-class>
+  	<function-class>com.nightsoul.commons.tag.NightsoulFunctions</function-class>
   	<function-signature>java.lang.Object invoke(java.lang.Object, java.lang.String, java.lang.Object, java.lang.Object, java.lang.Object)</function-signature>  	
   </function>
   <function>
   	<description>Invoke method in force</description>
   	<display-name>invokeWithArrayParams</display-name>
   	<name>invokeWithArrayParams</name>
-  	<function-class>com.nightsoul.commons.util.tld.NightsoulFunctions</function-class>
+  	<function-class>com.nightsoul.commons.tag.NightsoulFunctions</function-class>
   	<function-signature>java.lang.Object invoke(java.lang.Object, java.lang.String, java.lang.Object[])</function-signature>  	
   </function>
 
@@ -58,28 +58,28 @@
   	<description>Invoke method in force and specify chained key</description>
   	<display-name>invoke0WithChainedKey</display-name>
   	<name>invoke0WithChainedKey</name>
-  	<function-class>com.nightsoul.commons.util.tld.NightsoulFunctions</function-class>
+  	<function-class>com.nightsoul.commons.tag.NightsoulFunctions</function-class>
   	<function-signature>java.lang.Object invoke(java.lang.Object, java.lang.String, java.lang.String)</function-signature>  	
   </function>
   <function>
   	<description>Invoke method in force</description>
   	<display-name>invoke1WithChainedKey</display-name>
   	<name>invoke1WithChainedKey</name>
-  	<function-class>com.nightsoul.commons.util.tld.NightsoulFunctions</function-class>
+  	<function-class>com.nightsoul.commons.tag.NightsoulFunctions</function-class>
   	<function-signature>java.lang.Object invoke(java.lang.Object, java.lang.String, java.lang.String, java.lang.Object)</function-signature>  	
   </function>
   <function>
   	<description>Invoke method in force</description>
   	<display-name>invoke2WithChainedKey</display-name>
   	<name>invoke2WithChainedKey</name>
-  	<function-class>com.nightsoul.commons.util.tld.NightsoulFunctions</function-class>
+  	<function-class>com.nightsoul.commons.tag.NightsoulFunctions</function-class>
   	<function-signature>java.lang.Object invoke(java.lang.Object, java.lang.String, java.lang.String, java.lang.Object, java.lang.Object)</function-signature>  	
   </function>
   <function>
   	<description>Invoke method in force</description>
   	<display-name>invoke3WithChainedKey</display-name>
   	<name>invoke3WithChainedKey</name>
-  	<function-class>com.nightsoul.commons.util.tld.NightsoulFunctions</function-class>
+  	<function-class>com.nightsoul.commons.tag.NightsoulFunctions</function-class>
   	<function-signature>java.lang.Object invoke(java.lang.Object, java.lang.String, java.lang.String, java.lang.Object, java.lang.Object, java.lang.Object)</function-signature>  	
   </function>
 
@@ -87,7 +87,7 @@
   	<description>Invoke method in force</description>
   	<display-name>invokeWithArrayParamsAndChainedKey</display-name>
   	<name>invokeWithArrayParamsAndChainedKey</name>
-  	<function-class>com.nightsoul.commons.util.tld.NightsoulFunctions</function-class>
+  	<function-class>com.nightsoul.commons.tag.NightsoulFunctions</function-class>
   	<function-signature>java.lang.Object invoke(java.lang.Object, java.lang.String, java.lang.String, java.lang.Object[])</function-signature>  	
   </function>
   
