@@ -2,7 +2,7 @@ apply plugin: 'eclipse'
 apply plugin: 'java'
 apply plugin : 'maven'
 
-group = 'com.nightsoul.commons'
+group = 'com.nightsoul'
 version = '1.0.0-SNAPSHOT'
 
 targetCompatibility = '1.6'
