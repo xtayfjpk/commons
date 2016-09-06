@@ -184,6 +184,8 @@ public abstract class JMXClientHelper {
 	}
 	
 	
+	
+	
 	public static MBeanInfo getMBeanInfo(MBeanServerConnection connection,String objectName) {
 		MBeanInfo mBeanInfo;
 		ObjectName name = null;

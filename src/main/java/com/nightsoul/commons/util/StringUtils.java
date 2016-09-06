@@ -14,7 +14,7 @@ public abstract class StringUtils {
 	private StringUtils(){}
 	
 	public static boolean isTrimedEmpty(String value) {
-		return value==null || value.trim().isEmpty();
+		return ObjectUtils.isNull(value) || value.trim().isEmpty();
 	}
 	
 	public static boolean isTrimedNotEmpty(String value) {
@@ -22,11 +22,11 @@ public abstract class StringUtils {
 	}
 	
 	public static String trimLineBreak(String value) {
-		return value==null ? value : value.replaceAll(NEWLINE, EMPTY).replaceAll(RETURN, EMPTY);
+		return ObjectUtils.isNull(value) ? value : value.replaceAll(NEWLINE, EMPTY).replaceAll(RETURN, EMPTY);
 	}
 	
 	public static String lineBreakToBr(String value) {
-		return value==null ? value : value.replaceAll(RN, "<br/>").replaceAll(NEWLINE, "<br/>");
+		return ObjectUtils.isNull(value) ? value : value.replaceAll(RN, "<br/>").replaceAll(NEWLINE, "<br/>");
 	}
 	
 	public static String ascii2native(String ascii) {
@@ -52,11 +52,11 @@ public abstract class StringUtils {
 	}
 	
 	public static String native2ascii(String value) {
-		if(value!=null) {
+		if(ObjectUtils.isNotNull(value)) {
 			StringBuilder sb = new StringBuilder();
 			for(int i=0; i<value.length(); i++) {
 				char ch = value.charAt(i);
-				if(ch>=19968 && ch<=171941) {
+				if(Compares.notLess(ch, 19968) && Compares.notGreater(ch, 171941)) {
 					sb.append("\\u").append(Integer.toHexString(ch));
 				} else {
 					sb.append(ch);
@@ -68,13 +68,13 @@ public abstract class StringUtils {
 	}
 	
 	public static boolean startsWithIgnoreCase(String value, String prefix) {
-		if(value==null || prefix==null) {
+		if(ObjectUtils.orNull(value, prefix)) {
 			return false;
 		}
-		if(value.length() < prefix.length()) {
+		if(Compares.less(value.length(), prefix.length())) {
 			return false;
 		}
-		if(prefix.length() == 0) {
+		if(Compares.isZero(prefix.length())) {
 			return true;
 		}
 		String prefixInValue = value.substring(0, prefix.length());
@@ -82,13 +82,13 @@ public abstract class StringUtils {
 	}
 
 	public static boolean endsWithIgnoreCase(String value, String suffix) {
-		if(value==null || suffix==null) {
+		if(ObjectUtils.orNull(value, suffix)) {
 			return false;
 		}
-		if(value.length() < suffix.length()) {
+		if(Compares.less(value.length(), suffix.length())) {
 			return false;
 		}
-		if(suffix.length() == 0) {
+		if(Compares.isZero(suffix.length())) {
 			return true;
 		}
 		String suffixInValue = value.substring(value.length() - suffix.length(), value.length());
@@ -97,10 +97,11 @@ public abstract class StringUtils {
 	
 	
 	public static boolean containsWithIgnoreCase(String value, String sub) {
-		if(value==null || sub==null) {
+		if(ObjectUtils.orNull(value, sub)) {
 			return false;
 		}
-		if(value.length() < sub.length()) {
+		
+		if(Compares.less(value.length(), sub.length())) {
 			return false;
 		}
 		return value.toUpperCase().contains(sub.toUpperCase());
@@ -108,42 +109,70 @@ public abstract class StringUtils {
 	
 	public static boolean isChinese(char a) {
 	     int v = (int)a;
-	     return (v >=19968 && v <= 171941);
+	     return Compares.notLess(v, 19968) && Compares.notGreater(v, 171941);
 	}
 	
 	
-	public static String lowerFirstChar(String str) {
-		if(null==str) {
-			return null;
+	public static String lowerFirstChar(String value) {
+		if(org.apache.commons.lang.StringUtils.isEmpty(value)) {
+			return EMPTY;
 		}
-		if(str.length()==0) {
-			return str;
-		}
-		char c = Character.toLowerCase(str.charAt(0));
-		return c + str.substring(1);
+		char c = Character.toLowerCase(value.charAt(0));
+		return c + value.substring(1);
 	}
 	
-	public static String upperFirstChar(String str) {
-		if(null==str) {
-			return null;
+	public static String upperFirstChar(String value) {
+		if(org.apache.commons.lang.StringUtils.isEmpty(value)) {
+			return EMPTY;
 		}
-		if(str.length()==0) {
-			return str;
-		}
-		char c = Character.toUpperCase(str.charAt(0));
-		return c + str.substring(1);
+		char c = Character.toUpperCase(value.charAt(0));
+		return c + value.substring(1);
 	}
 	
-	public static String toLength(String value, int length) {
+	public static String trimToLength(String value, int length) {
 		Preconditions.checkArgument(length > 0, "String length must greater than 0");
 		if(org.apache.commons.lang.StringUtils.isEmpty(value)) {
 			return EMPTY;
 		}
 		
-		if(value.length() <= length) {
+		if(Compares.notGreater(value.length(), length)) {
 			return value;
 		}
 		
 		return value.substring(0, length) + "...";
+	}
+	
+	/**
+	 * 从源字符串中删除指定子字符串，只匹配一次
+	 * 如：aaabbbaaaccc.deleteFirst("aaa")，结果为bbbaaaccc
+	 * @param value 源字符串
+	 * @param toDelete 需要删除子字符串
+	 * @return 被删除子字符串的结果字符串
+	 */
+	public static String deleteFirst(String value, String toDelete) {
+		if(org.apache.commons.lang.StringUtils.isEmpty(value)) {
+			return EMPTY;
+		}
+		if(org.apache.commons.lang.StringUtils.isEmpty(toDelete)) {
+			return value;
+		}
+		return value.replaceFirst(toDelete, EMPTY);
+	}
+	
+	/**
+	 * 从源字符串中删除指定子字符串，匹配所有
+	 * 如：aaabbbaaaccc.deleteFirst("aaa")，结果为bbbccc
+	 * @param value 源字符串
+	 * @param toDelete 需要删除子字符串
+	 * @return 被删除子字符串的结果字符串
+	 */
+	public static String deleteAll(String value, String toDelete) {
+		if(org.apache.commons.lang.StringUtils.isEmpty(value)) {
+			return EMPTY;
+		}
+		if(org.apache.commons.lang.StringUtils.isEmpty(toDelete)) {
+			return value;
+		}
+		return value.replaceAll(toDelete, EMPTY);
 	}
 }

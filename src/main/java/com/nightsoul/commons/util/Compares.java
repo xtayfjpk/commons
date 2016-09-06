@@ -162,4 +162,183 @@ public abstract class Compares {
 		return left.compareTo((T) right) != 0;
 	}
 	
+	public static boolean isZero(char value) {
+		return value == 0;
+	}
+	public static boolean isZero(byte value) {
+		return value == 0;
+	}
+	public static boolean isZero(short value) {
+		return value == 0;
+	}
+	public static boolean isZero(float value) {
+		return value == 0.0f;
+	}
+	public static boolean isZero(int value) {
+		return value == 0;
+	}
+	public static boolean isZero(long value) {
+		return value == 0;
+	}
+	public static boolean isZero(double value) {
+		return value == 0.0;
+	}
+
+	public static boolean isNotZero(char value) {
+		return !isZero(value);
+	}
+	public static boolean isNotZero(byte value) {
+		return !isZero(value);
+	}
+	public static boolean isNotZero(short value) {
+		return !isZero(value);
+	}
+	public static boolean isNotZero(float value) {
+		return !isZero(value);
+	}
+	public static boolean isNotZero(int value) {
+		return !isZero(value);
+	}
+	public static boolean isNotZero(long value) {
+		return !isZero(value);
+	}
+	public static boolean isNotZero(double value) {
+		return !isZero(value);
+	}
+
+	public static boolean greaterThanZero(char value) {
+		return value > 0;
+	}
+	public static boolean greaterThanZero(byte value) {
+		return value > 0;
+	}
+	public static boolean greaterThanZero(short value) {
+		return value > 0;
+	}
+	public static boolean greaterThanZero(float value) {
+		return value > 0;
+	}
+	public static boolean greaterThanZero(int value) {
+		return value > 0;
+	}
+	public static boolean greaterThanZero(long value) {
+		return value > 0;
+	}
+	public static boolean greaterThanZero(double value) {
+		return value > 0;
+	}
+
+	public static boolean lessThanZero(char value) {
+		return value < 0;
+	}
+	public static boolean lessThanZero(byte value) {
+		return value < 0;
+	}
+	public static boolean lessThanZero(short value) {
+		return value < 0;
+	}
+	public static boolean lessThanZero(float value) {
+		return value < 0;
+	}
+	public static boolean lessThanZero(int value) {
+		return value < 0;
+	}
+	public static boolean lessThanZero(long value) {
+		return value < 0;
+	}
+	public static boolean lessThanZero(double value) {
+		return value < 0;
+	}
+
+	public static boolean notLessThanZero(char value) {
+		return !lessThanZero(value);
+	}
+	public static boolean notLessThanZero(byte value) {
+		return !lessThanZero(value);
+	}
+	public static boolean notLessThanZero(short value) {
+		return !lessThanZero(value);
+	}
+	public static boolean notLessThanZero(float value) {
+		return !lessThanZero(value);
+	}
+	public static boolean notLessThanZero(int value) {
+		return !lessThanZero(value);
+	}
+	public static boolean notLessThanZero(long value) {
+		return !lessThanZero(value);
+	}
+	public static boolean notLessThanZero(double value) {
+		return !lessThanZero(value);
+	}
+
+	public static boolean notGreaterThanZero(char value) {
+		return !greaterThanZero(value);
+	}
+	public static boolean notGreaterThanZero(byte value) {
+		return !greaterThanZero(value);
+	}
+	public static boolean notGreaterThanZero(short value) {
+		return !greaterThanZero(value);
+	}
+	public static boolean notGreaterThanZero(float value) {
+		return !greaterThanZero(value);
+	}
+	public static boolean notGreaterThanZero(int value) {
+		return !greaterThanZero(value);
+	}
+	public static boolean notGreaterThanZero(long value) {
+		return !greaterThanZero(value);
+	}
+	public static boolean notGreaterThanZero(double value) {
+		return !greaterThanZero(value);
+	}
+
+	public static boolean isNegativeOne(char value) {
+		return value == -1;
+	}
+	public static boolean isNegativeOne(byte value) {
+		return value == -1;
+	}
+	public static boolean isNegativeOne(short value) {
+		return value == -1;
+	}
+	public static boolean isNegativeOne(float value) {
+		return value == -1;
+	}
+	public static boolean isNegativeOne(int value) {
+		return value == -1;
+	}
+	public static boolean isNegativeOne(long value) {
+		return value == -1;
+	}
+	public static boolean isNegativeOne(double value) {
+		return value == -1;
+	}
+
+	public static boolean isNotNegativeOne(char value) {
+		return !isNegativeOne(value);
+	}
+	public static boolean isNotNegativeOne(byte value) {
+		return !isNegativeOne(value);
+	}
+	public static boolean isNotNegativeOne(short value) {
+		return !isNegativeOne(value);
+	}
+	public static boolean isNotNegativeOne(float value) {
+		return !isNegativeOne(value);
+	}
+	public static boolean isNotNegativeOne(int value) {
+		return !isNegativeOne(value);
+	}
+	public static boolean isNotNegativeOne(long value) {
+		return !isNegativeOne(value);
+	}
+	public static boolean isNotNegativeOne(double value) {
+		return !isNegativeOne(value);
+	}
+
+	
+	
+	
 }

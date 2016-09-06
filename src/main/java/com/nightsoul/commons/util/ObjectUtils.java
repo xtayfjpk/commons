@@ -46,6 +46,14 @@ public abstract class ObjectUtils {
 	public static boolean isNotNull(Object value) {
 		return !isNull(value);
 	}
+
+	public static boolean orNull(Object first, Object second) {
+		return first==null || second==null;
+	}
+
+	public static boolean andNotNull(Object first, Object second) {
+		return !orNull(first, second);
+	}
 	
 	/**
 	 * 判断某对象是否是指定类的实例
