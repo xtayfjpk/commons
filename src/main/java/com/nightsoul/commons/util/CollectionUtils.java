@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -110,7 +111,7 @@ public abstract class CollectionUtils {
 	 * @return
 	 */
 	public static <T> boolean isEmpty(T[] array) {
-		return array==null || array.length==0;
+		return ObjectUtils.isNull(array) || array.length==0;
 	}
 	
 	/**
@@ -128,6 +129,84 @@ public abstract class CollectionUtils {
 			T element = iter.next();
 			if(condition.apply(element)) {
 				iter.remove();
+			}
+		}
+	}
+	
+	public static <T> List<T> getList(T... objects) {
+		return ObjectUtils.isNull(objects) ? Collections.EMPTY_LIST : Arrays.asList(objects);
+	}
+	
+	public static void removeNullValues(List<?> list) {
+		Iterator<?> iterator = list.iterator();
+		while(iterator.hasNext()){
+			Object value = iterator.next();
+			if(ObjectUtils.isNull(value)){
+				iterator.remove();
+			}
+		}
+	}
+	
+	public static int getSize(Collection<?> collection) {
+		if(ObjectUtils.isNull(collection)){
+			return 0;
+		}
+		return collection.size();
+	}
+
+	public static int getSize(Collection<?>... collections) {
+		int size = 0;
+		if(ObjectUtils.isNotNull(collections)){
+			for(Collection<?> collection : collections){
+				size += getSize(collection);
+			}
+		}
+		return size;
+	}
+	
+	public static <T> List<T> union(Collection<T>... collections) {
+		int totalSize = 0;
+		for(Collection<T> list : collections){
+			if(Compares.greater(getSize(list), 0)){
+				totalSize += list.size();
+			}
+		}
+		if(Compares.isZero(totalSize)){
+			return Collections.EMPTY_LIST;
+		}
+		ArrayList<T> combinedList = new ArrayList<T>(totalSize);
+		for(Collection<T> list : collections) {
+			if(ObjectUtils.isNotNull(list)) {
+				combinedList.addAll(list);
+			}
+		}
+		return combinedList;
+	}
+	
+	public static <T> Set<T> combineAsSet(Collection<T>... collections) {
+		int totalSize = 0;
+		for(Collection<T> list : collections){
+			if(Compares.greater(getSize(list), 0)){
+				totalSize += list.size();
+			}
+		}
+		if(Compares.isZero(totalSize)){
+			return Collections.EMPTY_SET;
+		}
+
+		HashSet<T> set = new HashSet<T>(totalSize);
+		for(Collection<T> list : collections){
+			if(ObjectUtils.isNotNull(list)){
+				set.addAll(list);
+			}
+		}
+		return set;
+	}
+	
+	public static <T> void addNewEntries(Collection<T> baseCollection, Collection<T> newEntries) {
+		for(T object : newEntries){
+			if(!baseCollection.contains(object)){
+				baseCollection.add(object);
 			}
 		}
 	}
